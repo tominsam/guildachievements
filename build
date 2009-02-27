@@ -3,5 +3,5 @@ cd ~/Projects/GuildAchievements
 python guildachievements.py >  test.atom
 if [ -e test.atom ] && [ -s test.atom ]
 then
-  cp test.atom ~/web/jerakeen.org/test/guild.atom 
+  cp test.atom ~/web/jerakeen.org/test/guild_feedburner.atom 
 fi
