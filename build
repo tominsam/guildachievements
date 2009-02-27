@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ~/Projects/GuildAchievements
+cd ~/Projects/guildachievements
 python guildachievements.py >  test.atom
 if [ -e test.atom ] && [ -s test.atom ]
 then
