@@ -8,6 +8,7 @@ import urllib, urllib2
 import xmltramp
 import socket
 import sys
+from time import gmtime, strftime
 
 #####################################
 
@@ -72,9 +73,6 @@ for character in xml['guildInfo']['guild']['members']['character':]:
 
 achievements.sort(lambda a,b: cmp(b['date'], a['date']))
 
-from time import gmtime, strftime
-my_time = strftime("%Y-%m-%dT%H:%M:%SZ", gmtime())
-
 output = ""
 
 output += """<?xml version="1.0" encoding="utf-8"?>
@@ -83,7 +81,7 @@ output += """<?xml version="1.0" encoding="utf-8"?>
   <id>%s</id>
   <updated>%s</updated>
   <link href="http://%s/guild-info.xml?r=%s&amp;n=%s&amp;p=1" rel="alternate"></link>
-"""%( guild, feed_id, my_time, wowserver, urllib.quote(realm,''), urllib.quote(guild,'') )
+"""%( guild, feed_id, strftime("%Y-%m-%dT%H:%M:%SZ", gmtime()), wowserver, urllib.quote(realm,''), urllib.quote(guild,'') )
 
 for ach in achievements[:50]:
     # TODO - More XML escaping. We already do title above, but that's a little crude.
